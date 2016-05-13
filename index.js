@@ -509,4 +509,7 @@ function css2xpath(s, nested) {
     return s;
 }
 
-module.exports = css2xpath;
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports = css2xpath;
+}
