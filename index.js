@@ -143,7 +143,7 @@ var xpath_to_lower         = function (s) {
                         return str;
                     return axis + '[@' + attr + ']';
                 } else {
-                    return axis + '[@' + attr + '="' + val + '"]'
+                    return axis + '[@' + attr + '="' + val + '"]';
                 }
         }
     },
@@ -507,10 +507,6 @@ function css2xpath(s, nested) {
 
     s = prependAxis(s, './/'); // prepend ".//" axis to begining of CSS selector
     return s;
-}
-
-if (!module) {
-    module = {};
 }
 
 module.exports = css2xpath;
