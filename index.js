@@ -1,6 +1,7 @@
 'use strict';
 
-var xpath_to_lower         = function (s) {
+(function () {
+    var xpath_to_lower         = function (s) {
         return "translate(" + (s || 'normalize-space()') + ", 'ABCDEFGHJIKLMNOPQRSTUVWXYZ', 'abcdefghjiklmnopqrstuvwxyz')";
     },
 
@@ -338,8 +339,8 @@ var xpath_to_lower         = function (s) {
         return axis + '[contains(concat(" ",normalize-space(@class)," ")," ' + val + ' ")]';
     };
 
-// Prepend descendant-or-self if no other axis is specified
-function prependAxis(s, axis) {
+    // Prepend descendant-or-self if no other axis is specified
+    function prependAxis(s, axis) {
     return s.replace(regex_first_axis, function (match, start, literal) {
         if (literal.substr(literal.length - 2) === '::') // Already has axis::
             return match;
@@ -352,8 +353,8 @@ function prependAxis(s, axis) {
     });
 }
 
-// Find the begining of the selector, starting at i and working backwards
-function selectorStart(s, i) {
+    // Find the begining of the selector, starting at i and working backwards
+    function selectorStart(s, i) {
     var depth = 0;
     var offset = 0;
 
@@ -386,15 +387,15 @@ function selectorStart(s, i) {
     return 0;
 }
 
-// Check if string is numeric
-function isNumeric(s) {
+    // Check if string is numeric
+    function isNumeric(s) {
     var num = parseInt(s, 10);
 
     return (!isNaN(num) && '' + num === s);
 }
 
-// Append escape "char" to "open" or "close"
-function escapeChar(s, open, close, char) {
+    // Append escape "char" to "open" or "close"
+    function escapeChar(s, open, close, char) {
     var depth = 0;
 
     return s.replace(new RegExp('[\\' + open + '\\' + close + ']', 'g'), function (a) {
@@ -409,7 +410,7 @@ function escapeChar(s, open, close, char) {
     })
 }
 
-function repeat(str, num) {
+    function repeat(str, num) {
     num = Number(num);
     var result = '';
 
@@ -425,7 +426,7 @@ function repeat(str, num) {
     return result;
 }
 
-function css2xpath(s, nested) {
+    function css2xpath(s, nested) {
     //s = s.trim();
 
     if (nested === true) {
@@ -510,6 +511,10 @@ function css2xpath(s, nested) {
 }
 
 
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = css2xpath;
-}
+    if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+        module.exports = css2xpath;
+    } else {
+        window.css2xpath = css2xpath;
+    }
+
+})();
