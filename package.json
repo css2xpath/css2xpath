@@ -1,0 +1,26 @@
+{
+  "name": "css2xpath",
+  "version": "0.0.1",
+  "description": "Advanced CSS to XPath converter",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./node_modules/.bin/nodeunit test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/css2xpath/css2xpath.git"
+  },
+  "keywords": [
+    "css",
+    "xpath",
+    "selector",
+    "jquery",
+    "css3"
+  ],
+  "author": "rchipka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/css2xpath/css2xpath/issues"
+  },
+  "homepage": "https://github.com/css2xpath/css2xpath#readme"
+}
