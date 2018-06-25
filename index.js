@@ -337,7 +337,7 @@
         case 'out-of-range':
           return '[@' + name + ']';
         default:
-          return str;
+          return match;
         }
       },
 
